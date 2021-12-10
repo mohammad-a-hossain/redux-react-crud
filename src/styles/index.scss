@@ -1,7 +1,9 @@
 
 
 $theme-colors: (
-    "info": tomato,
-    "danger": teal
+    "primary": #9d3eeb,
+     "danger": #ff4136,
+     "info":rgba(62, 121, 231, 0.867)
 );
-@import "~bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
+//@import "~bootstrap/scss/bootstrap";
