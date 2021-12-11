@@ -1,37 +1,28 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import Contact from './Contact';
 
 export default function Table() {
+  const contacts = useSelector((state )=> state.contacts)
+  //console.log(contacts)
     return (
-        <table className="container table table-light table-info table-hover">
+        <table className="container table table shadow table-light table-info table-hover">
   <thead className=" bg-teal">
     <tr >
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-      
+      <th scope="col">
+      <input type="checkbox" name="" value=""/>
+      </th>
+      <th scope="col">First Name</th>
+      <th scope="col">Phone number</th>
+      <th scope="col">Email address</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr >
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
+      {
+        contacts.map((contact)=><Contact contact={contact}/>)
+      }
+  
   </tbody>
 </table>
     )
