@@ -1,3 +1,4 @@
+import { CREATE_CONTACT,GET_CONTACT } from "../constants/types"
 const initialState ={ contacts:[
     {
       "id": 1,
@@ -227,17 +228,32 @@ const initialState ={ contacts:[
         "name": "Hoeger LLC",
         "catchPhrase": "Centralized empowering task-force",
         "bs": "target end-to-end models"
-      }
-    }
-  ]
+      },
+    },
+  ],
+  contact:null,
+
 }
 export const contactReducer = (state= initialState, action)=>{
     switch(action.type){
-      case "ADD_CONTACT":
+      case CREATE_CONTACT:
         return{
           ...state,
           contacts:[action.payload, ...state.contacts]
         }
+     case GET_CONTACT:
+      let arr = state.contacts.filter(
+        (contact) => contact.id == action.payload
+      );
+      arr = arr.values();
+      for (let val of arr) {
+        arr = val;
+      }
+      return{
+        ...state,
+        contact:arr
+      }
+       
         default:
           return state
     }

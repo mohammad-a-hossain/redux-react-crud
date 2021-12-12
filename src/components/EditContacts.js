@@ -1,40 +1,32 @@
 import React from 'react'
 import { Form,Button } from 'react-bootstrap'
-import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { addContact } from './../actions/contactAction';
-import  shortid from 'shortid';
-import { useHistory } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getContact } from './../actions/contactAction';
+
+import { useParams } from 'react-router-dom';
 
 
-const AddContact = () => {
+
+const EditContacts = () => {
+     const dispatch = useDispatch()
+ 
  // const [value, setValue] = useState('')
+useEffect(()=>{
+    dispatch(getContact(id))
+},[])
 
- const dispatch = useDispatch()
- let history =useHistory()
 
+ //let history =useHistory()
+ //const contact = useSelector((state) => state.contact.contact);
+ let {id} =useParams()
   const [name, setName]  = useState('')
   const [email, setEmail]  = useState('')
   const [phone, setPhone]  = useState('')
 
- 
-
-  const submitForm = e=>{
-    e.preventDefault()
-    const new_contact = {
-      id:shortid.generate(),
-      name:name,
-      email:email,
-      phone:phone
-    }
-    //console.log(name,phone,email)
-    dispatch(addContact(new_contact))
-    history.push('/components/Table')
-  }
-
-    return (
+       return (
         <div className='container'>
-         <Form className='col-md-6' onSubmit={submitForm}>
+         <Form className='col-md-6' >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Contact Name</Form.Label>
           <Form.Control type="text" onChange={(e)=>setName(e.target.value)} value={name} placeholder="Enter name" />
@@ -55,4 +47,4 @@ const AddContact = () => {
       
     )
 }
-export default AddContact
+export default EditContacts

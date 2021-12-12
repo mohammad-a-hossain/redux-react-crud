@@ -1,8 +1,9 @@
 import React from 'react'
 import Avatar from 'react-avatar'
+import { Link } from 'react-router-dom';
 
 export default function Contact({contact}) {
-    const {name, phone, email} = contact
+    const {name, phone, email, id} = contact
     return (
         
         <tr >
@@ -13,12 +14,12 @@ export default function Contact({contact}) {
         <td>{phone}</td>
         <td>{email}</td>
         <td>
-        <a href='##'>
+        <Link to={`/components/EditContacts/:${id}`}>
         <span className="material-icons"style={{fontSize:'15px',color:'green'}}>edit</span>
-        </a>
-        <a href='##'>
+        </Link>
+        <Link href='##'>
         <span className="material-icons"  style={{fontSize:'18px',color:'red'}}>remove</span>
-        </a>
+        </Link>
         </td>
       </tr>
         

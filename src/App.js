@@ -7,6 +7,7 @@ import store from './store';
 import { Provider } from 'react-redux';
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
 import  AddContact  from './components/AddContact';
+import EditContacts from './components/EditContacts';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Switch> 
       <Route exact path ='/components/Table' component={Table}/>
       <Route exact path='/components/AddContact' component={AddContact }/> 
+      <Route exact path='/components/EditContacts/:id' component={EditContacts }/> 
       <Table/>
       
       </Switch>
