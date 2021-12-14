@@ -1,28 +1,37 @@
 import React from 'react'
 import { Form,Button } from 'react-bootstrap'
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { getContact } from './../actions/contactAction';
-
 import { useParams } from 'react-router-dom';
 
 
 
 const EditContacts = () => {
+      let {id} =useParams()
      const dispatch = useDispatch()
- 
- // const [value, setValue] = useState('')
-useEffect(()=>{
-    dispatch(getContact(id))
-},[])
 
+     const editcontact = useSelector((state) => state.contact.editcontact)
+
+  //alert(id)
+ const [name, setName]  = useState('')
+ const [email, setEmail]  = useState('')
+ const [phone, setPhone]  = useState('')
+
+ // const [value, setValue] = useState('')
+ useEffect(() => {
+   if(editcontact != null){
+     setName(editcontact.name)
+     setEmail(editcontact.email)
+     setPhone(editcontact.phone)
+   }
+  dispatch(getContact(id))
+// eslint-disable-next-line react-hooks/exhaustive-deps
+},[dispatch]);
 
  //let history =useHistory()
  //const contact = useSelector((state) => state.contact.contact);
- let {id} =useParams()
-  const [name, setName]  = useState('')
-  const [email, setEmail]  = useState('')
-  const [phone, setPhone]  = useState('')
+ 
 
        return (
         <div className='container'>
@@ -40,7 +49,7 @@ useEffect(()=>{
         </Form.Group>
       
         <Button variant="primary" type="submit">
-          create contact
+          upload contact
         </Button>
       </Form> 
         </div>

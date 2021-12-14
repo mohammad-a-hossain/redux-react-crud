@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import Contact from './Contact';
 
 export default function Table() {
-  const contacts = useSelector((state )=> state.contacts)
+  const contacts = useSelector((state )=> state.contact.contacts)
   //console.log(contacts)
     return (
         <table className="container table table shadow table-light table-info table-hover">
@@ -19,9 +19,11 @@ export default function Table() {
     </tr>
   </thead>
   <tbody>
-      {
-        contacts.map((contact)=><Contact contact={contact}/>)
-      }
+      
+        {contacts.map((contact) => (
+          <Contact contact={contact} key={contact.id} />
+        ))}
+      
   
   </tbody>
 </table>

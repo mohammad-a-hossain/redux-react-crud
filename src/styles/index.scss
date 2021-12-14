@@ -1,9 +1,13 @@
-
-
 $theme-colors: (
-    "primary": #9d3eeb,
-     "danger": #ff4136,
-     "info":rgba(62, 121, 231, 0.867)
+  "primary": #6200ea,
+  "success": #33691e,
+  "danger": #f50057,
+  "warning": #ffab00,
 );
-@import "node_modules/bootstrap/scss/bootstrap";
-//@import "~bootstrap/scss/bootstrap";
+
+// Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap";
+
+body {
+  padding-top: 5rem; // 5 rem  = 5*16
+}
