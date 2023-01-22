@@ -2,7 +2,7 @@ import React from "react";
 import "./styles/App.scss";
 import Navbar from "./components/elements/Navbar";
 import Contacts from "./components/contacts/Contacts";
-import { povider, Provider } from "react-redux";
+import { Provider } from "react-redux";
 import store from "./store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddContact from "./components/contacts/AddContact";
